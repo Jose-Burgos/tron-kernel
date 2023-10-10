@@ -6,6 +6,7 @@
 #include <videoDriver.h>
 #include <keyboardDriver.h>
 #include <interrupts.h>
+//#include <MemoryManager.h> //this include is doomed
 
 #define STDIN 0
 #define STDERR 1

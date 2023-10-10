@@ -46,7 +46,7 @@ void printSavedRegisters(){
     for (; i < REGISTER_NUM - 1 ; i++){
         printString((uint8_t *) regNames[i], MAGENTA);
         printString((uint8_t *) "\t\t\t\t\t\t",MAGENTA);
-        printBin(registers[i]);
+        printBase(registers[i], 2);
         printString((uint8_t *) "\n",MAGENTA);
     }
 }

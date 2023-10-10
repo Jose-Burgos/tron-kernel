@@ -152,11 +152,12 @@ uint64_t sys_wait(uint32_t millis){
 
 
 uint64_t sys_inforeg(uint64_t array[REGISTER_NUM]){
-    if (registers != 0)
+    if (registers != 0){
         for (int i = 0 ; i < REGISTER_NUM ; i++)
             array[i] = registers[i];
         
         return 1;
+        }
     
     return 0;
 }

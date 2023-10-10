@@ -4,8 +4,8 @@
 #include <moduleLoader.h>
 #include <videoDriver.h>
 #include <idtLoader.h>
-#include <MemoryManager.h>
 #include <syscallManager.h>
+#include <MemoryManager.h> 
 
 extern uint8_t text;
 extern uint8_t rodata;
@@ -57,13 +57,10 @@ void testMemoryManager(){
     printBase(*num1, 10);
     printBase(*num2, 10);
 
+    fun1(num1, num2);
 
     printBase(*num1, 10);
     printBase(*num2, 10);
-
-
-    fun1(num1, num2);
-
 
     char * str = sys_malloc(sizeof(char) * 10);
 
@@ -73,16 +70,15 @@ void testMemoryManager(){
     str[3] = 'a';
     str[4] = 0;
 
-    printString(str, RED);
+    printString((uint8_t*)str, RED);
 
     fun2(str);
 
-    printString(str, BLUE);
-    printString(str, BLUE);
-    printString(str, BLUE);
-    printString(str, BLUE);
+    printString((uint8_t*) str, BLUE);
+    printString((uint8_t*) str, BLUE);
+    printString((uint8_t*) str, BLUE);
+    printString((uint8_t*) str, BLUE);
     return ;
-
 }
 
 
@@ -97,13 +93,11 @@ void *initializeKernelBinary() {
 
     void * startOfMem = (void *)(((uint8_t *) endOfModules + PageSize - (uint64_t) endOfModules % PageSize));
 
-    //printBase((uint64_t) startOfMem, 16);
+    //printBase((uint64_t) startOfMem, 16); // need to comment clear screen
 
     MemoryManagerADT memoryManager = createMemoryManager(startOfMem, startOfMem + sizeof(MemoryManagerADT));
 
-
     clearBSS(&bss, &endOfKernel - &bss);
-
 
     return getStackBase();
 }
@@ -112,11 +106,9 @@ void *initializeKernelBinary() {
 int main() {
     load_idt();
     clearScreen();
-    // testMemoryManager();
+    // testMemoryManager(); //In order to work u need to comment the call to the userland
 
     ((EntryPoint) uCodeModuleAddress)();
-
-
 
     return 0;
 }
