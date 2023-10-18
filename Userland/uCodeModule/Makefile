@@ -8,7 +8,7 @@ OBJECTS_ASM=$(SOURCES_ASM:asm/%.asm=object/%.asm.o)
 all: $(MODULE)
 
 $(MODULE): $(SOURCES) $(OBJECTS_ASM)
-	$(GCC) $(GCCFLAGS) -I./include -T uCodeModule.ld _loader.c $(OBJECTS_ASM) $(SOURCES) -o ../$(MODULE)
+	$(GCC) $(GCCFLAGS) -fno-pic -I./include -T uCodeModule.ld _loader.c $(OBJECTS_ASM) $(SOURCES) -o ../$(MODULE)
 
 object/%.asm.o : asm/%.asm
 	mkdir -p object

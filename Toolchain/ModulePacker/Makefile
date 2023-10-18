@@ -4,7 +4,7 @@ SOURCES=$(wildcard *.c)
 all: $(MP)
 
 $(MP): $(SOURCES)
-	gcc $(SOURCES) -o $(MP)
+	gcc $(SOURCES) -fno-pic -o $(MP)
 
 clean:
 	rm -rf $(MP)

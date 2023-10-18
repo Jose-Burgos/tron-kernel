@@ -6,6 +6,7 @@
 #include <idtLoader.h>
 #include <syscallManager.h>
 #include <MemoryManager.h> 
+#include <videoDriver.h>
 
 extern uint8_t text;
 extern uint8_t rodata;

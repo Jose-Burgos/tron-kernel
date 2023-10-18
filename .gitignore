@@ -99,3 +99,5 @@ Kernel/*.bin
 object/
 
 compile.sh
+
+docker.sh
